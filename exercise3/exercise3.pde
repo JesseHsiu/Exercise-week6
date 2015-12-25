@@ -27,15 +27,7 @@ void draw()
       }
     }
 
-    if (flower_hps[i] > 80) {
-      image(flower_safe, 50 + i * 80, height - flower_danger.height);
-    }
-    else if (flower_hps[i]<=80 && flower_hps[i] > 40) {
-      image(flower_warning, 50 + i * 80, height - flower_danger.height);
-    }
-    else {
-      image(flower_danger, 50 + i * 80, height - flower_danger.height);
-    }
+    drawFlower(50 + i * 80, height - flower_danger.height , flower_hps[i]);
   }
 
   for (int i = 24; i >= 0; i--) {
@@ -45,5 +37,17 @@ void draw()
     else {
       numbers[i] = numbers[i-1];  
     }
+  }
+}
+void drawFlower(int x, int y,float hpValue)
+{
+  if (hpValue > 80) {
+    image(flower_safe, x, y);
+  }
+  else if (hpValue <= 80 && hpValue > 40) {
+    image(flower_warning, x, y);
+  }
+  else {
+    image(flower_danger, x, y);
   }
 }
